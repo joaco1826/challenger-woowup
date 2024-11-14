@@ -18,8 +18,8 @@ class Recipients(str, Enum):
     * juaco.1826@gmail.com\n
     * jforeroola@gmail.com
     """
-    MAILGUN = 'juaco.1826@gmail.com'
-    SENDGRID = 'jforeroola@gmail.com'
+    MAILGUN = os.getenv("MAILGUN_RECIPIENT")
+    SENDGRID = os.getenv("SENDGRID_RECIPIENT")
 
     @staticmethod
     def values() -> list:

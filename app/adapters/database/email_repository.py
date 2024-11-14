@@ -1,9 +1,9 @@
 from app.models.email_model import EmailModel
-from app.core.entities.email import Email, EmailBase
+from app.core.entities.email import Email, EmailCreate
 
 
 class EmailRepository:
-    async def create_email(self, email_data: EmailBase) -> Email:
+    async def create_email(self, email_data: EmailCreate) -> Email:
         email_doc = EmailModel(
             recipient=email_data.recipient,
             sender=email_data.sender,

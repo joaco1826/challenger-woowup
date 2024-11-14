@@ -6,7 +6,7 @@ from app.adapters.email.email_handler import EmailHandler
 from app.adapters.email.sendgrid_provider import SendGridProvider
 from app.adapters.email.mailgun_provider import MailgunProvider
 from app.adapters.database.email_repository import EmailRepository
-from app.core.entities.email import Email, EmailBase
+from app.core.entities.email import Email, EmailCreate
 
 
 class SendEmail:
@@ -17,7 +17,7 @@ class SendEmail:
         ])
         self.email_repository = EmailRepository()
 
-    async def execute(self, email_data: EmailBase) -> Email:
+    async def execute(self, email_data: EmailCreate) -> Email:
         email = await self.email_repository.create_email(email_data)
 
         try:

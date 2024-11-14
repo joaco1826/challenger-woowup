@@ -3,12 +3,12 @@ from typing import Optional
 from pydantic import BaseModel, EmailStr
 
 from app.constants.database import Status
-from app.constants.email import Recipients
+from app.constants.email import Senders
 
 
 class EmailCreate(BaseModel):
-    sender: EmailStr
-    recipient: Recipients
+    sender: Senders
+    recipient: EmailStr
     subject: str
     body: str
 

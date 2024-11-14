@@ -13,7 +13,7 @@ class MailgunProvider(EmailProvider):
         try:
             auth = ("api", self.MAILGUN_API_KEY)
             data = {
-                "from": email.sender,
+                "from": email.sender.value,
                 "to": [email.recipient],
                 "subject": email.subject,
                 "html": email.body,

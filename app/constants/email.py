@@ -15,17 +15,17 @@ class EmailConstants:
     MESSAGE_EMAIL_SUCCESS = "Email processed successfully."
 
 
-class Recipients(str, Enum):
-    """ Recipients allowed
+class Senders(str, Enum):
+    """ Senders allowed
     * juaco.1826@gmail.com\n
     * jforeroola@gmail.com
     """
-    MAILGUN = os.getenv("MAILGUN_RECIPIENT")
-    SENDGRID = os.getenv("SENDGRID_RECIPIENT")
+    MAILGUN = os.getenv("MAILGUN_SENDER")
+    SENDGRID = os.getenv("SENDGRID_SENDER")
 
     @staticmethod
     def values() -> list:
-        return list(map(lambda e: e.value, Recipients))
+        return list(map(lambda e: e.value, Senders))
 
 
 class Providers(str, Enum):

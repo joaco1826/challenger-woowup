@@ -10,5 +10,5 @@ class Config:
     APP_NAME = os.getenv("APP_NAME", "Email service")
     SENTRY_DSN = os.getenv("SENTRY_DSN")
     API_VERSION = "0.0.1"
-    SWAGGER_URL = "/documentation"
+    SWAGGER_URL = "/swagger"
     REDOC = "/redoc"

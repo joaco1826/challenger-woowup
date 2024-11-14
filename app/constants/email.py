@@ -17,7 +17,7 @@ class EmailConstants:
 
 class Senders(str, Enum):
     """ Senders allowed
-    * juaco.1826@gmail.com\n
+    * mailgun@sandbox066420485fa7479b9b9c15968b61dccf.mailgun.org\n
     * jforeroola@gmail.com
     """
     MAILGUN = os.getenv("MAILGUN_SENDER")

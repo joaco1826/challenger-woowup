@@ -2,7 +2,7 @@
 
 ## Description
 
-This is an API that handles sending emails, with two email providers (Mailgun, Sendgrid).
+Api que se encarga de enviar emails
 
 ## Clean Architecture
 Elegi esta arquitectura ya que es mantenible y escalable, actualmente el proyecto acepta un email simple
@@ -70,12 +70,19 @@ $ {host}/swagger
 ```
 
 ### FrontEnd
+```sh
+$ {host}
+```
 Se agrega un unico archivo index.html, como comentaba tiene una funcionalidad básica de enviar 
 un email a un solo destinatario, llamemos la entrega como un MVP que luego va a ir teniendo 
-nuevos features, esta funcionalidad tiene un select de remitente, son 2, un remitente que es 
-el de mailgun (mailgun@sandbox066420485fa7479b9b9c15968b61dccf.mailgun.org) 
-y un remitente que es el de sendgrid, mailgun tiene una limitación que solo puede enviar emails 
+nuevos features, como proveedores de correos uso mailgun y sendgrid, 
+mailgun tiene una limitación que solo puede enviar emails 
 a correos registrados en el dominio, los cuales solo tengo agregados (juaco.1826@gmail.com y 
-jforeroola@gmail.com), con sendgrid si puedo enviar a cualquier correo, para probar la funcionalidad 
-que se envie el correo si llega a fallar mailgun que es el predeterminado, puede enviar un email como 
-destinatario un correo diferente a los registrados y al fallar se enviara por sendgrid
+jforeroola@gmail.com), con sendgrid si puedo enviar a cualquier correo. Mailgun es el proveedor 
+predeterminado, por tal manera fallará si el destinario es diferente a los correos registrados 
+y al fallar el email se enviará por sendgrid, en el api la respuesta detalla el remitente y el 
+proveedor por donde se realiza el envio.
+
+#### Contact
+Joaquin Forero <juaco.1826@gmail.com>
+GitHub joaco1826

@@ -89,6 +89,9 @@ Servicio desplegado en Amazon EC2 con nginx
 ### Security
 Se agregar captcha de google con el fin de evitar robots
 
+### Experience
+En las tecnologias aplicadas tengo aproximadamente unos 6 años de experiencia
+
 #### Contact
 Joaquin Forero <juaco.1826@gmail.com>
 GitHub joaco1826

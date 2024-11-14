@@ -13,7 +13,7 @@ from app.models.email_model import EmailModel
 async def test_send_email_integration_success(mocker):
     email_data = EmailCreate(
         sender="sender@example.com",
-        recipient="jforeroola@gmail.com",
+        recipient="users@gmail.com",
         subject="Test Email",
         body="<p>This is a test email</p>"
     )

@@ -6,7 +6,7 @@ from httpx import Response
 from app.adapters.email.mailgun_provider import MailgunProvider
 from app.constants.database import Status
 from app.core.entities.email import Email
-from app.constants.email import Providers
+from app.constants.email import Providers, EmailConstants
 
 
 @pytest.fixture
@@ -17,8 +17,8 @@ def mailgun_provider():
 @pytest.fixture
 def mock_email():
     return Email(
-        sender="sender@example.com",
-        recipient="jforeroola@gmail.com",
+        sender=EmailConstants.MAILGUN_SENDER,
+        recipient="users@gmail.com",
         subject="Test Email",
         body="<p>This is a test email</p>",
         email_uuid="1234",

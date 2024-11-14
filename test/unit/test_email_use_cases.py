@@ -17,8 +17,7 @@ def send_email_use_case():
 @pytest.fixture
 def mock_email_create():
     return EmailCreate(
-        sender="sender@example.com",
-        recipient="jforeroola@gmail.com",
+        recipient="users@gmail.com",
         subject="Test Email",
         body="This is a test email."
     )
@@ -27,8 +26,8 @@ def mock_email_create():
 @pytest.fixture
 def mock_email():
     return Email(
-        sender="sender@example.com",
-        recipient="jforeroola@gmail.com",
+        sender="jforeroola@gmail.com",
+        recipient="users@gmail.com",
         subject="Test Email",
         body="<p>This is a test email</p>",
         email_uuid="1234",
@@ -52,12 +51,12 @@ async def test_send_email_success(mocker, send_email_use_case, mock_email_create
     mock_send_email = mocker.patch.object(
         send_email_use_case.email_handler, "send_email", new_callable=AsyncMock
     )
-    mock_send_email.return_value = (True, "SendGrid")
+    mock_send_email.return_value = (True, Providers.SENDGRID.value)
 
     result = await send_email_use_case.execute(mock_email_create)
 
     assert result.status == Status.SENT.value
-    assert result.provider == "SendGrid"
+    assert result.provider == Providers.SENDGRID.value
     assert result.sent_at is not None
     mock_create_email.assert_called_once_with(mock_email_create)
     mock_send_email.assert_called_once_with(mock_email)

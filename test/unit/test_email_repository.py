@@ -29,22 +29,22 @@ def repository():
 @pytest.mark.asyncio
 async def test_save_email(mock_db, repository):
     record = EmailCreate(
-        recipient="jforeroola@gmail.com",
-        sender="user@example.com",
+        recipient="users@gmail.com",
+        sender="jforeroola@gmail.com",
         body="test email",
         subject="test email"
     )
     saved_record = await repository.create_email(record)
 
     assert saved_record.email_uuid is not None
-    assert saved_record.recipient == "jforeroola@gmail.com"
+    assert saved_record.recipient == "users@gmail.com"
 
 
 @pytest.mark.asyncio
 async def test_get_email_by_id(mock_db, repository):
     record = EmailCreate(
-        recipient="jforeroola@gmail.com",
-        sender="user@example.com",
+        recipient="users@gmail.com",
+        sender="jforeroola@gmail.com",
         body="test email",
         subject="test email"
     )
@@ -59,8 +59,8 @@ async def test_get_email_by_id(mock_db, repository):
 async def test_update_email_status_success(mock_db, repository):
     email_doc = EmailModel(
         email_uuid="1234",
-        recipient="jforeroola@gmail.com",
-        sender="noreply@example.com",
+        recipient="users@gmail.com",
+        sender="jforeroola@gmail.com",
         subject="Test Email",
         body="This is a test email.",
         status=Status.PENDING.value,
@@ -71,8 +71,8 @@ async def test_update_email_status_success(mock_db, repository):
 
     email_data = Email(
         email_uuid="1234",
-        recipient="jforeroola@gmail.com",
-        sender="noreply@example.com",
+        recipient="users@gmail.com",
+        sender="jforeroola@gmail.com",
         subject="Test Email",
         body="This is a test email.",
         status=Status.SENT.value,
@@ -96,8 +96,8 @@ async def test_update_email_status_success(mock_db, repository):
 async def test_update_email_status_not_found(mock_db, repository):
     email_data = Email(
         email_uuid="9999",
-        recipient="jforeroola@gmail.com",
-        sender="noreply@example.com",
+        recipient="users@gmail.com",
+        sender="jforeroola@gmail.com",
         subject="Test Email",
         body="This is a test email.",
         status=Status.SENT.value,

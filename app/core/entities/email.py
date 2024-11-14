@@ -19,8 +19,8 @@ class Email(EmailCreate):
     status: Status
     created_at: datetime
     sent_at: Optional[datetime] = None
-    
-    
+
+
 class ResponseBase(BaseModel):
     success: bool
     message: str

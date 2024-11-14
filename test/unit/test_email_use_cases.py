@@ -1,7 +1,7 @@
 from datetime import datetime
 
 import pytest
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock
 
 from app.constants.database import Status
 from app.constants.email import Providers

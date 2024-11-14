@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.constants.config import Config
@@ -18,6 +20,14 @@ app = FastAPI(
     docs_url=Config.SWAGGER_URL,
     debug=Config.DEBUG
 )
+
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
+
+@app.get("/", response_class=HTMLResponse)
+async def read_index():
+    with open("app/static/index.html") as f:
+        return HTMLResponse(content=f.read())
 
 origins = ["*"]
 

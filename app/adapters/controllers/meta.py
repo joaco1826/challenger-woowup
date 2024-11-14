@@ -7,7 +7,7 @@ from app.constants.config import Config
 router = APIRouter()
 
 
-@router.get("/", tags=["Meta"])
+@router.get("/health", tags=["Meta"])
 async def root():
     response = {
         "MicroService": Config.APP_NAME

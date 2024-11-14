@@ -12,6 +12,10 @@ class EmailCreate(BaseModel):
     body: str
 
 
+class EmailCaptcha(EmailCreate):
+    captcha_token: str
+
+
 class Email(EmailCreate):
     sender: Optional[Senders] = None
     email_uuid: str

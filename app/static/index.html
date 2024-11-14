@@ -13,6 +13,7 @@
     >
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -36,6 +37,10 @@
                     <div class="mb-3">
                         <label for="body" class="form-label">Cuerpo del Correo</label>
                         <div id="editor" style="height: 300px;" required></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="g-recaptcha" data-sitekey="6LdbWX8qAAAAANOl8SEf0VM3u0ZfqTVvvkXfqaU8"></div>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100">Enviar Correo</button>
@@ -62,6 +67,12 @@
         document.getElementById('emailForm').addEventListener('submit', async function (event) {
             event.preventDefault();
 
+            const captchaResponse = grecaptcha.getResponse();
+            if (!captchaResponse) {
+                alert("Please complete the CAPTCHA.");
+                return;
+            }
+
             const recipient = document.getElementById('recipient').value;
             const subject = document.getElementById('subject').value;
             const body = quill.root.innerHTML;
@@ -69,7 +80,8 @@
             const emailData = {
                 recipient: recipient,
                 subject: subject,
-                body: body
+                body: body,
+                captcha_token: captchaResponse
             };
 
             try {

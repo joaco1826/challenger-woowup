@@ -86,6 +86,9 @@ proveedor por donde se realiza el envio.
 ### Server
 Servicio desplegado en Amazon EC2 con nginx
 
+### Security
+Se agregar captcha de google con el fin de evitar robots
+
 #### Contact
 Joaquin Forero <juaco.1826@gmail.com>
 GitHub joaco1826

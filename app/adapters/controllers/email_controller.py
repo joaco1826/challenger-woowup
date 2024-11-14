@@ -15,7 +15,7 @@ router = APIRouter()
         }
     }
 })
-async def send_email(email_data: EmailCreate) -> ResponseBase or HTTPException:
+async def send_email(email_data: EmailCreate) -> ResponseBase | HTTPException:
     """
     Sends an email and saves its status in the database.
 

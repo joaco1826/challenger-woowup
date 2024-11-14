@@ -18,7 +18,7 @@ class Email(EmailCreate):
     provider: str
     status: Status
     created_at: datetime
-    sent_at: datetime
+    sent_at: Optional[datetime] = None
     
     
 class ResponseBase(BaseModel):

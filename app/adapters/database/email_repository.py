@@ -14,14 +14,14 @@ class EmailRepository:
         email_doc.save()
         return self._to_entity(email_doc)
 
-    async def update_email_status(self, email: Email) -> None:
+    async def update_email_status(self, email: Email) -> EmailModel | None:
         email_doc = EmailModel.objects(email_uuid=email.email_uuid).first()
         if email_doc:
             email_doc.status = email.status
             email_doc.provider = email.provider
             if email.status == Status.SENT.value:
                 email_doc.sent_at = email.sent_at
-            email_doc.save()
+            return email_doc.save()
 
     async def get_email_by_id(self, email_uuid: str) -> Email | None:
         email_doc = EmailModel.objects(email_uuid=email_uuid).first()

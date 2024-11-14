@@ -6,6 +6,7 @@ from app.adapters.email.email_handler import EmailHandler
 from app.adapters.email.sendgrid_provider import SendGridProvider
 from app.adapters.email.mailgun_provider import MailgunProvider
 from app.adapters.database.email_repository import EmailRepository
+from app.constants.database import Status
 from app.core.entities.email import Email, EmailCreate
 
 
@@ -24,13 +25,13 @@ class SendEmail:
             success, provider = await self.email_handler.send_email(email)
             email.provider = provider
             if success:
-                email.status = "sent"
+                email.status = Status.SENT.value
                 email.sent_at = datetime.utcnow()
             else:
-                email.status = "failed"
+                email.status = Status.FAILED.value
         except Exception as e:
             capture_exception(e)
-            email.status = "failed"
+            email.status = Status.FAILED.value
             print(f"Error sending email: {e}")
         finally:
             await self.email_repository.update_email_status(email)

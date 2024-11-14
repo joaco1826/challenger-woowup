@@ -11,4 +11,5 @@ def connect_db() -> None:
     """
     connect(
         host=MongoConstants.URI,
+        uuidRepresentation="standard"
     )

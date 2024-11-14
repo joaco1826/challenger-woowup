@@ -7,6 +7,7 @@ from app.adapters.email.sendgrid_provider import SendGridProvider
 from app.adapters.email.mailgun_provider import MailgunProvider
 from app.adapters.database.email_repository import EmailRepository
 from app.constants.database import Status
+from app.constants.email import Senders
 from app.core.entities.email import Email, EmailCreate
 
 
@@ -26,6 +27,7 @@ class SendEmail:
             email.provider = provider
             if success:
                 email.status = Status.SENT.value
+                email.sender = getattr(Senders, provider).value
                 email.sent_at = datetime.utcnow()
             else:
                 email.status = Status.FAILED.value

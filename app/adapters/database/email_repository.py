@@ -7,7 +7,6 @@ class EmailRepository:
     async def create_email(self, email_data: EmailCreate) -> Email:
         email_doc = EmailModel(
             recipient=email_data.recipient,
-            sender=email_data.sender,
             subject=email_data.subject,
             body=email_data.body
         )

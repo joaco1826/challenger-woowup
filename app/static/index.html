@@ -24,15 +24,6 @@
             <div class="card-body">
                 <form id="emailForm">
                     <div class="mb-3">
-                        <label for="sender" class="form-label">Remitente</label>
-                        <select name="sender" id="sender" class="form-control">
-                            <option value="mailgun@sandbox066420485fa7479b9b9c15968b61dccf.mailgun.org">
-                                mailgun@sandbox066420485fa7479b9b9c15968b61dccf.mailgun.org
-                            </option>
-                            <option value="jforeroola@gmail.com">jforeroola@gmail.com</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
                         <label for="recipient" class="form-label">Destinatario</label>
                         <input type="email" id="recipient" class="form-control" name="recipient" required>
                     </div>
@@ -72,13 +63,11 @@
             event.preventDefault();
 
             const recipient = document.getElementById('recipient').value;
-            const sender = document.getElementById('sender').value;
             const subject = document.getElementById('subject').value;
             const body = quill.root.innerHTML;
 
             const emailData = {
                 recipient: recipient,
-                sender: sender,
                 subject: subject,
                 body: body
             };

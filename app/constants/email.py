@@ -7,10 +7,11 @@ load_dotenv()
 
 
 class EmailConstants:
-    SENDGRID_URL = os.getenv("SENDGRID_URL")
+    SENDGRID_SENDER = os.getenv("SENDGRID_SENDER")
     SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
     MAILGUN_API_KEY = os.getenv("MAILGUN_API_KEY")
     MAILGUN_DOMAIN = os.getenv("MAILGUN_DOMAIN")
+    MAILGUN_SENDER = os.getenv("MAILGUN_SENDER")
     MESSAGE_EMAIL_FAILED = "The email could not be sent."
     MESSAGE_EMAIL_SUCCESS = "Email processed successfully."
 

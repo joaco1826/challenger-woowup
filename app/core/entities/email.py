@@ -7,13 +7,13 @@ from app.constants.email import Senders
 
 
 class EmailCreate(BaseModel):
-    sender: Senders
     recipient: EmailStr
     subject: str
     body: str
 
 
 class Email(EmailCreate):
+    sender: Optional[Senders] = None
     email_uuid: str
     provider: str
     status: Status

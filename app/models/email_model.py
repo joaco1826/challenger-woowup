@@ -21,7 +21,7 @@ class EmailModel(Document):
         default=lambda: str(uuid4()),
     )
     recipient = StringField(required=True)
-    sender = StringField(required=True)
+    sender = StringField(required=False, default=None)
     subject = StringField(required=True)
     body = StringField(required=True)
     provider = StringField(required=False, default="")

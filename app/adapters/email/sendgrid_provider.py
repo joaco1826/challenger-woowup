@@ -12,7 +12,7 @@ class SendGridProvider(EmailProvider):
 
     async def send_email(self, email: Email) -> (bool, str):
         message = Mail(
-            from_email=email.sender.value,
+            from_email=EmailConstants.SENDGRID_SENDER,
             to_emails=email.recipient,
             subject=email.subject,
             html_content=email.body

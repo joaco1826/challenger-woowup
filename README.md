@@ -61,17 +61,17 @@ $ pytest -v
 
 ### Documentation
 ```sh
-$ {host}/redoc
+$ http://54.226.253.64/redoc
 ```
 
 ### Swagger
 ```sh
-$ {host}/swagger
+$ http://54.226.253.64/swagger
 ```
 
 ### FrontEnd
 ```sh
-$ {host}
+$ http://54.226.253.64/
 ```
 Se agrega un unico archivo index.html, como comentaba tiene una funcionalidad básica de enviar 
 un email a un solo destinatario, llamemos la entrega como un MVP que luego va a ir teniendo 
@@ -82,6 +82,9 @@ jforeroola@gmail.com), con sendgrid si puedo enviar a cualquier correo. Mailgun 
 predeterminado, por tal manera fallará si el destinario es diferente a los correos registrados 
 y al fallar el email se enviará por sendgrid, en el api la respuesta detalla el remitente y el 
 proveedor por donde se realiza el envio.
+
+### Server
+Servicio desplegado en Amazon EC2 con nginx
 
 #### Contact
 Joaquin Forero <juaco.1826@gmail.com>

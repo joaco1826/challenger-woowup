@@ -4,7 +4,7 @@ import pytest
 from unittest.mock import AsyncMock
 
 from app.constants.database import Status
-from app.constants.email import Providers
+from app.constants.email import Providers, EmailConstants
 from app.core.entities.email import Email, EmailCreate
 from app.core.use_cases.send_email import SendEmail
 
@@ -26,7 +26,7 @@ def mock_email_create():
 @pytest.fixture
 def mock_email():
     return Email(
-        sender="jforeroola@gmail.com",
+        sender=EmailConstants.SENDGRID_SENDER,
         recipient="users@gmail.com",
         subject="Test Email",
         body="<p>This is a test email</p>",

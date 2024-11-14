@@ -5,6 +5,7 @@ from mongoengine import connect, disconnect
 from mongomock import MongoClient
 from app.adapters.database.email_repository import EmailRepository
 from app.constants.database import Status
+from app.constants.email import EmailConstants
 from app.core.entities.email import EmailCreate, Email
 from app.models.email_model import EmailModel
 
@@ -30,7 +31,7 @@ def repository():
 async def test_save_email(mock_db, repository):
     record = EmailCreate(
         recipient="users@gmail.com",
-        sender="jforeroola@gmail.com",
+        sender=EmailConstants.SENDGRID_SENDER,
         body="test email",
         subject="test email"
     )
@@ -44,7 +45,7 @@ async def test_save_email(mock_db, repository):
 async def test_get_email_by_id(mock_db, repository):
     record = EmailCreate(
         recipient="users@gmail.com",
-        sender="jforeroola@gmail.com",
+        sender=EmailConstants.SENDGRID_SENDER,
         body="test email",
         subject="test email"
     )
@@ -60,7 +61,7 @@ async def test_update_email_status_success(mock_db, repository):
     email_doc = EmailModel(
         email_uuid="1234",
         recipient="users@gmail.com",
-        sender="jforeroola@gmail.com",
+        sender=EmailConstants.SENDGRID_SENDER,
         subject="Test Email",
         body="This is a test email.",
         status=Status.PENDING.value,
@@ -72,7 +73,7 @@ async def test_update_email_status_success(mock_db, repository):
     email_data = Email(
         email_uuid="1234",
         recipient="users@gmail.com",
-        sender="jforeroola@gmail.com",
+        sender=EmailConstants.SENDGRID_SENDER,
         subject="Test Email",
         body="This is a test email.",
         status=Status.SENT.value,
@@ -97,7 +98,7 @@ async def test_update_email_status_not_found(mock_db, repository):
     email_data = Email(
         email_uuid="9999",
         recipient="users@gmail.com",
-        sender="jforeroola@gmail.com",
+        sender=EmailConstants.SENDGRID_SENDER,
         subject="Test Email",
         body="This is a test email.",
         status=Status.SENT.value,

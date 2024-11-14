@@ -2,9 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.constants.config import Config
-from app.frameworks.database.mongo import connect_db
-from app.frameworks.http.middleware import SentryMiddleware
-from app.frameworks.monitoring.sentry import init_sentry
+from app.config.database.mongo import connect_db
+from app.config.http.middleware import SentryMiddleware
+from app.config.monitoring.sentry import init_sentry
 from app.adapters.controllers.meta import router as meta_router
 from app.adapters.controllers.email_controller import router as email_router
 

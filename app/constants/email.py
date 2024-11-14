@@ -24,3 +24,16 @@ class Recipients(str, Enum):
     @staticmethod
     def values() -> list:
         return list(map(lambda e: e.value, Recipients))
+
+
+class Providers(str, Enum):
+    """ Providers available
+    * MAILGUN\n
+    * SENDGRID
+    """
+    MAILGUN = 'MAILGUN'
+    SENDGRID = 'SENDGRID'
+
+    @staticmethod
+    def values() -> list:
+        return list(map(lambda e: e.value, Providers))

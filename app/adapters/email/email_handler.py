@@ -1,3 +1,5 @@
+from sentry_sdk import capture_exception
+
 from app.adapters.email.email_provider import EmailProvider
 from app.core.entities.email import Email
 
@@ -14,5 +16,6 @@ class EmailHandler:
                 if success:
                     return True, provider
             except Exception as e:
+                capture_exception(e)
                 print(f"Error with provider {pvd.__class__.__name__}: {e}")
         return False, provider

@@ -1,4 +1,7 @@
 from fastapi import APIRouter, HTTPException
+
+from app.constants.database import Status
+from app.constants.email import EmailConstants
 from app.core.use_cases.send_email import SendEmail
 from app.core.entities.email import EmailCreate, ResponseBase
 
@@ -10,12 +13,12 @@ router = APIRouter()
         "description": "Bad request",
         "content": {
             "application/json": {
-                "example": {"detail": "The email could not be sent."}
+                "example": {"detail": EmailConstants.MESSAGE_EMAIL_FAILED}
             }
         }
     }
 })
-async def send_email(email_data: EmailCreate) -> ResponseBase | HTTPException:
+async def send_email(email_data: EmailCreate) -> ResponseBase or HTTPException:
     """
     Sends an email and saves its status in the database.
 
@@ -29,11 +32,11 @@ async def send_email(email_data: EmailCreate) -> ResponseBase | HTTPException:
 
     result = await send_email_case.execute(email_data)
 
-    if result.status == "failed":
-        raise HTTPException(status_code=400, detail="The email could not be sent.")
+    if result.status == Status.FAILED.value:
+        raise HTTPException(status_code=400, detail=EmailConstants.MESSAGE_EMAIL_FAILED)
 
     return ResponseBase(
         success=True,
-        message="Email processed successfully.",
+        message=EmailConstants.MESSAGE_EMAIL_SUCCESS,
         data=result
     )

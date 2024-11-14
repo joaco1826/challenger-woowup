@@ -11,6 +11,8 @@ class EmailConstants:
     SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
     MAILGUN_API_KEY = os.getenv("MAILGUN_API_KEY")
     MAILGUN_DOMAIN = os.getenv("MAILGUN_DOMAIN")
+    MESSAGE_EMAIL_FAILED = "The email could not be sent."
+    MESSAGE_EMAIL_SUCCESS = "Email processed successfully."
 
 
 class Recipients(str, Enum):

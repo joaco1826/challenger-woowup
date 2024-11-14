@@ -3,6 +3,8 @@ from uuid import uuid4
 from mongoengine import Document, StringField, DateTimeField
 from datetime import datetime
 
+from app.constants.database import Status
+
 
 class EmailModel(Document):
     meta = {
@@ -23,6 +25,6 @@ class EmailModel(Document):
     subject = StringField(required=True)
     body = StringField(required=True)
     provider = StringField(required=False, default="")
-    status = StringField(choices=["sent", "failed", "pending"], default="pending")
+    status = StringField(choices=Status.values(), default=Status.PENDING.value)
     created_at = DateTimeField(default=datetime.utcnow)
     sent_at = DateTimeField()

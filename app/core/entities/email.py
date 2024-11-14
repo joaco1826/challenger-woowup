@@ -2,6 +2,8 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, EmailStr
 
+from app.constants.database import Status
+
 
 class EmailCreate(BaseModel):
     sender: EmailStr
@@ -11,11 +13,11 @@ class EmailCreate(BaseModel):
 
 
 class Email(EmailCreate):
-    email_uuid: Optional[str] = None
-    provider: Optional[str] = None
-    status: Optional[str] = None
-    created_at: Optional[datetime] = None
-    sent_at: Optional[datetime] = None
+    email_uuid: str
+    provider: str
+    status: Status
+    created_at: datetime
+    sent_at: datetime
     
     
 class ResponseBase(BaseModel):

@@ -1,3 +1,4 @@
+from app.constants.database import Status
 from app.models.email_model import EmailModel
 from app.core.entities.email import Email, EmailCreate
 
@@ -18,7 +19,7 @@ class EmailRepository:
         if email_doc:
             email_doc.status = email.status
             email_doc.provider = email.provider
-            if email.status == "sent":
+            if email.status == Status.SENT.value:
                 email_doc.sent_at = email.sent_at
             email_doc.save()
 

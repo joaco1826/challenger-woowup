@@ -6,6 +6,7 @@ from app.frameworks.database.mongo import connect_db
 from app.frameworks.http.middleware import SentryMiddleware
 from app.frameworks.monitoring.sentry import init_sentry
 from app.adapters.controllers.meta import router as meta_router
+from app.adapters.controllers.email_controller import router as email_router
 
 init_sentry()
 
@@ -38,4 +39,9 @@ app.add_event_handler(
 
 app.include_router(
     meta_router
+)
+
+app.include_router(
+    email_router,
+    prefix="/api/v1"
 )

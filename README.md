@@ -92,6 +92,18 @@ Se agregar captcha de google con el fin de evitar robots
 ### Experience
 En las tecnologias aplicadas tengo aproximadamente unos 6 años de experiencia
 
+### Cloud
+![Diagrama del Proyecto](Challenge-Woowup.jpg "Arquitectura del Proyecto")
+La arquitectura debe ser siempre acorde al proyecto, debe la arquitectura poder escalar 
+en cuanto el proyecto crezca, se debe pensar en costos, por ejemplo inicialmente 
+pense en SQS para encolar los emails, los emails nunca deberian ser transaccionales en 
+una app, ya que es una notificación y se puede manejar asyncronamente, si las transacciones 
+de emails son numerosas por segundo y los emails deben tener un poco más agilidad se 
+puede implementar kafka, este siendo más costoso que SQS, esta misma arquitectura cloud 
+se representa en el codigo del proyecto, aclarando que en el codigo no implementé SQS, 
+pero en el caso que llegue a implementarse kafka se puede implementar el patrón de arquitectura 
+CQRS, ideal para numerosas transacciones y podriamos realizar segregación de responsabilidades
+
 #### Contact
 Joaquin Forero <juaco.1826@gmail.com>
 GitHub joaco1826
